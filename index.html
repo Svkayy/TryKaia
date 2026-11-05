@@ -455,6 +455,7 @@ a{color:inherit}
 .arrive .small{margin-top:36px;color:var(--dim)}
 footer{border-top:1px solid var(--hair);padding-block:26px calc(96px + env(safe-area-inset-bottom,0px));color:var(--dim)}
 footer .inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer .credits{flex-basis:100%;margin:6px 0 0;font:500 10.5px/1.5 var(--words);letter-spacing:.02em;color:rgba(154,158,168,.5)}
 
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
@@ -916,7 +917,7 @@ footer .inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap
   </section>
 </div>
 
-<footer class="wrap"><div class="inner"><span class="caps">Kaia · made in Pittsburgh</span><span class="caps" id="footDrive">This page is the Zion–Mount Carmel Highway</span><span class="caps">Maps and imagery: Apple Maps · Elevation: Open-Meteo · Car photos: Charles from Port Chester, NY (CC BY 2.0, Wikimedia Commons)</span></div></footer>
+<footer class="wrap"><div class="inner"><span class="caps">Kaia · made in Pittsburgh</span><span class="caps" id="footDrive">This page is the Zion–Mount Carmel Highway</span><p class="credits">Maps and imagery © Apple Maps · Elevation data: Open-Meteo, CC BY 4.0 · Car photos: Charles from Port Chester, NY, CC BY 2.0, via Wikimedia Commons</p></div></footer>
 
 <div class="instrument away" id="instrument" aria-hidden="true">
   <div class="odo"><span class="seg"><span class="ghost">888.8</span><span class="val" id="odo">0.0</span></span><span class="caps">mi</span></div>
