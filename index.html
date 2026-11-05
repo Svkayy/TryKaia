@@ -121,20 +121,25 @@ a{color:inherit}
 .drive{position:relative}
 #spine{position:absolute;left:0;top:0;width:90px;pointer-events:none;display:none}
 @media (min-width:1260px){#spine{display:block;left:max(0px,calc(50% - 680px))}}
-.instrument{position:fixed;left:50%;bottom:calc(14px + env(safe-area-inset-bottom,0px));transform:translate(-50%,0);z-index:50;display:flex;align-items:center;gap:18px;padding:10px 14px 10px 18px;border-radius:18px;background:rgba(23,25,30,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 0 0 1px var(--hair);max-width:calc(100% - 32px);transition:opacity .3s ease,transform .3s ease}
+.instrument{position:fixed;left:50%;bottom:calc(14px + env(safe-area-inset-bottom,0px));transform:translate(-50%,0);z-index:50;
+  /* one fixed size: the odometer, the road (cut short if long) and the speed with its sign never move */
+  width:min(400px,calc(100% - 32px));height:64px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;column-gap:14px;padding:0 12px 0 16px;
+  border-radius:18px;background:rgba(23,25,30,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 0 0 1px var(--hair);transition:opacity .3s ease,transform .3s ease}
 .instrument.away{opacity:0;transform:translate(-50%,14px);pointer-events:none}
-.instrument .odo{display:flex;align-items:baseline;gap:6px}
+.instrument .odo{display:flex;align-items:baseline;gap:6px;white-space:nowrap}
 .instrument .odo .seg{font-size:22px}
 .instrument .odo .caps{color:var(--dim);font-size:10px}
-.instrument .road{min-width:0;max-width:220px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;color:var(--mute);font-size:11px}
-.instrument .spd{display:flex;align-items:center;gap:10px}
+.instrument .road{min-width:0;color:var(--mute);font-size:11px;line-height:1.3;text-align:center;text-wrap:balance;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.instrument .spd{display:flex;align-items:center;justify-content:flex-end;gap:10px}
 .instrument .spd .seg{font-size:30px;transition:color .2s}
 .instrument .spd.over .seg{color:var(--rec)}
-.limit{width:30px;height:38px;border-radius:5px;background:#F4F2EC;color:#111;display:grid;place-items:center;align-content:center;gap:1px;box-shadow:inset 0 0 0 2px #111, inset 0 0 0 3px #F4F2EC;flex:none}
-.limit small{font:700 5.5px/1 var(--stamp);letter-spacing:.04em;text-align:center}
-.limit b{font:700 15px/1 var(--stamp)}
-.spd.over .limit{box-shadow:inset 0 0 0 2px var(--rec), inset 0 0 0 3px #F4F2EC}
-@media (max-width:560px){.instrument{gap:12px;padding:8px 10px 8px 12px}.instrument .road{max-width:110px}.instrument .odo .seg{font-size:18px}.instrument .spd .seg{font-size:24px}}
+/* a US speed limit sign: white, a black rule inset from the edge, two words over the number */
+.limit{width:34px;height:44px;border-radius:5px;background:#F4F2EC;color:#111;flex:none;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding-top:1px}
+.limit::before{content:"";position:absolute;inset:2px;border:1.5px solid #111;border-radius:3.5px;pointer-events:none}
+.limit small{font:700 6px/1.08 var(--stamp);letter-spacing:.06em;text-align:center}
+.limit b{font:700 17px/.9 var(--stamp);letter-spacing:.01em}
+.spd.over .limit::before{border-color:var(--rec)}
+@media (max-width:560px){.instrument{column-gap:10px;padding:0 10px 0 12px;height:60px}.instrument .odo .seg{font-size:17px}.instrument .odo .caps{font-size:9px}.instrument .spd{gap:8px}.instrument .spd .seg{font-size:24px}.instrument .road{font-size:10px;letter-spacing:.1em}}
 
 /* ───────────── stops ───────────── */
 .stop{position:relative;padding-block:clamp(64px,8vw,112px)}
@@ -458,6 +463,8 @@ a{color:inherit}
 .arrive .small{margin-top:36px;color:var(--dim)}
 footer{border-top:1px solid var(--hair);padding-block:26px calc(96px + env(safe-area-inset-bottom,0px));color:var(--dim)}
 footer .inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{color:var(--mute);text-decoration:none;border-bottom:1px solid var(--hair)}
+footer a:hover{color:var(--cream)}
 footer .credits{flex-basis:100%;margin:6px 0 0;font:500 10.5px/1.5 var(--words);letter-spacing:.02em;color:rgba(154,158,168,.5)}
 
 @media (prefers-reduced-motion:reduce){
@@ -920,7 +927,7 @@ footer .credits{flex-basis:100%;margin:6px 0 0;font:500 10.5px/1.5 var(--words);
   </section>
 </div>
 
-<footer class="wrap"><div class="inner"><span class="caps">Kaia · made in Pittsburgh</span><span class="caps" id="footDrive">This page is the Zion–Mount Carmel Highway</span><p class="credits">Maps and imagery © Apple Maps · Elevation data: Open-Meteo, CC BY 4.0 · Car photos: Charles from Port Chester, NY, CC BY 2.0, via Wikimedia Commons</p></div></footer>
+<footer class="wrap"><div class="inner"><span class="caps">Kaia · made in Pittsburgh · <a href="/privacy/">Privacy</a> · <a href="/support/">Support</a></span><span class="caps" id="footDrive">This page is the Zion–Mount Carmel Highway</span><p class="credits">Maps and imagery © Apple Maps · Elevation data: Open-Meteo, CC BY 4.0 · Car photos: Charles from Port Chester, NY, CC BY 2.0, via Wikimedia Commons</p></div></footer>
 
 <div class="instrument away" id="instrument" aria-hidden="true">
   <div class="odo"><span class="seg"><span class="ghost">888.8</span><span class="val" id="odo">0.0</span></span><span class="caps">mi</span></div>
