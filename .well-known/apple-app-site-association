@@ -1,0 +1,21 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [
+          "UB34N46TJQ.com.sandeepvinay.drivetime"
+        ],
+        "components": [
+          {
+            "/": "/s/*",
+            "comment": "things shared from Kaia"
+          },
+          {
+            "/": "/s",
+            "comment": "things shared from Kaia"
+          }
+        ]
+      }
+    ]
+  }
+}
