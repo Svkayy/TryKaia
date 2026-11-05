@@ -307,7 +307,7 @@ const ZD = (function(){
     const dt=Math.max(1,now-lastT), dy=Math.abs(scrollY-lastY); lastY=scrollY; lastT=now;
     const iv=Math.min(99, dy/dt*1000/26); v += (iv - v) * (iv>v ? .18 : .05);
     const s=Math.round(v); if(s!==shown){ shown=s; sv.textContent=s }
-    spd.classList.toggle("over", s > L2+5);
+    spd.classList.toggle("fast", s > L2+5);
     requestAnimationFrame(tick);
   }
   requestAnimationFrame(tick);

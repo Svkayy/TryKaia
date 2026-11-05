@@ -132,13 +132,13 @@ a{color:inherit}
 .instrument .road{min-width:0;color:var(--mute);font-size:11px;line-height:1.3;text-align:center;text-wrap:balance;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .instrument .spd{display:flex;align-items:center;justify-content:flex-end;gap:10px}
 .instrument .spd .seg{font-size:30px;transition:color .2s}
-.instrument .spd.over .seg{color:var(--rec)}
+.instrument .spd.fast .seg{color:var(--rec)}
 /* a US speed limit sign: white, a black rule inset from the edge, two words over the number */
 .limit{width:34px;height:44px;border-radius:5px;background:#F4F2EC;color:#111;flex:none;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding-top:1px}
 .limit::before{content:"";position:absolute;inset:2px;border:1.5px solid #111;border-radius:3.5px;pointer-events:none}
 .limit small{font:700 6px/1.08 var(--stamp);letter-spacing:.06em;text-align:center}
 .limit b{font:700 17px/.9 var(--stamp);letter-spacing:.01em}
-.spd.over .limit::before{border-color:var(--rec)}
+.spd.fast .limit::before{border-color:var(--rec)}
 @media (max-width:560px){.instrument{column-gap:10px;padding:0 10px 0 12px;height:60px}.instrument .odo .seg{font-size:17px}.instrument .odo .caps{font-size:9px}.instrument .spd{gap:8px}.instrument .spd .seg{font-size:24px}.instrument .road{font-size:10px;letter-spacing:.1em}}
 
 /* ───────────── stops ───────────── */
