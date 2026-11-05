@@ -43,7 +43,7 @@ function markicon(svg){
   const road=`M${P(690,245)}C${P(554,267)} ${P(365,321)} ${P(322,392)}C${P(260,495)} ${P(630,515)} ${P(604,638)}C${P(589,712)} ${P(475,750)} ${P(382,800)}L${P(646,800)}C${P(780,701)} ${P(788,616)} ${P(683,540)}C${P(595,475)} ${P(411,454)} ${P(482,389)}C${P(545,332)} ${P(655,280)} ${P(690,245)}Z`;
   const centre=`M${P(690,245)}C${P(604.5,273.5)} ${P(455,326.5)} ${P(402,390.5)}C${P(335.5,474.5)} ${P(612.5,495)} ${P(643.5,589)}C${P(688.5,664)} ${P(627.5,725.5)} ${P(514,800)}`;
   const id="m"+Math.random().toString(36).slice(2,7);
-  svg.innerHTML=`<defs><mask id="${id}"><path class="pave" d="${centre}" fill="none" stroke="#fff" stroke-width="150" stroke-linecap="butt"/></mask></defs>
+  svg.innerHTML=`<defs><mask id="${id}"><path class="pave" d="${centre}" fill="none" stroke="#fff" stroke-width="150" stroke-linecap="round"/></mask></defs>
   <path d="${br}" fill="none" stroke="currentColor" stroke-width="42" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="${road}" fill="currentColor" mask="url(#${id})"/>`;
 }
