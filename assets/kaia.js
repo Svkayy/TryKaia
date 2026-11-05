@@ -36,12 +36,13 @@ function wordmark(svg){
   stem(0);seg(0,[50,106],[134,14]);seg(0,[50,140],[134,226]);A(232);stem(464);A(576);
   svg.innerHTML = `<path fill="none" stroke="currentColor" stroke-width="28" stroke-linecap="round" d="${S.map(s=>`M${s[0]} ${s[1]}L${s[2]} ${s[3]}`).join("")}"/>`;
 }
+// The page's mark: the kit's geometry, with the road's foot tapered to a point like its head.
 function markicon(svg){
   const s=478/555, cx=534.9521824837523, cy=522.5, P=(x,y)=>`${(512+(x-cx)*s).toFixed(1)} ${(512+(y-cy)*s).toFixed(1)}`;
   const lo=212,hi=812,a=116,r=26;
   const br=`M${lo} ${lo+a}L${lo} ${lo+r}Q${lo} ${lo} ${lo+r} ${lo}L${lo+a} ${lo}M${hi-a} ${lo}L${hi-r} ${lo}Q${hi} ${lo} ${hi} ${lo+r}L${hi} ${lo+a}M${lo} ${hi-a}L${lo} ${hi-r}Q${lo} ${hi} ${lo+r} ${hi}L${lo+a} ${hi}M${hi-a} ${hi}L${hi-r} ${hi}Q${hi} ${hi} ${hi} ${hi-r}L${hi} ${hi-a}`;
-  const road=`M${P(690,245)}C${P(554,267)} ${P(365,321)} ${P(322,392)}C${P(260,495)} ${P(630,515)} ${P(604,638)}C${P(589,712)} ${P(475,750)} ${P(382,800)}L${P(646,800)}C${P(780,701)} ${P(788,616)} ${P(683,540)}C${P(595,475)} ${P(411,454)} ${P(482,389)}C${P(545,332)} ${P(655,280)} ${P(690,245)}Z`;
-  const centre=`M${P(690,245)}C${P(604.5,273.5)} ${P(455,326.5)} ${P(402,390.5)}C${P(335.5,474.5)} ${P(612.5,495)} ${P(643.5,589)}C${P(688.5,664)} ${P(627.5,725.5)} ${P(514,800)}`;
+  const road=`M${P(690,245)}C${P(554,267)} ${P(365,321)} ${P(322,392)}C${P(260,495)} ${P(630,515)} ${P(604,638)}C${P(589,712)} ${P(475,760)} ${P(372,806)}C${P(520,792)} ${P(790,690)} ${P(683,540)}C${P(595,475)} ${P(411,454)} ${P(482,389)}C${P(545,332)} ${P(655,280)} ${P(690,245)}Z`;
+  const centre=`M${P(690,245)}C${P(604.5,273.5)} ${P(455,326.5)} ${P(402,390.5)}C${P(335.5,474.5)} ${P(612.5,495)} ${P(643.5,589)}C${P(680,680)} ${P(520,770)} ${P(392,800)}`;
   const id="m"+Math.random().toString(36).slice(2,7);
   svg.innerHTML=`<defs><mask id="${id}"><path class="pave" d="${centre}" fill="none" stroke="#fff" stroke-width="150" stroke-linecap="round"/></mask></defs>
   <path d="${br}" fill="none" stroke="currentColor" stroke-width="42" stroke-linecap="round" stroke-linejoin="round"/>
