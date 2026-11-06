@@ -299,10 +299,12 @@ const ZD = (function(){
   let lastY=scrollY, lastT=performance.now(), v=0, shown=-1;
   function tick(now){
     const top=driveEl.offsetTop, H=driveEl.offsetHeight, vh=innerHeight;
-    const prog=clamp((scrollY+vh*.6-top)/H,0,1);
+    // the drive ends where the page does: the last scroll position is the East Entrance
+    const maxY=Math.max(0, document.documentElement.scrollHeight-vh), reach=Math.max(1, Math.min(H, maxY+vh*.6-top));
+    const prog=scrollY>=maxY-1 ? 1 : clamp((scrollY+vh*.6-top)/reach,0,1);
     if(pathEl) pathEl.style.strokeDashoffset=L*(1-prog);
     odo.textContent=(prog*total).toFixed(1);
-    inst.classList.toggle("away", scrollY < top - vh*.4 || scrollY+vh > document.body.scrollHeight-40);
+    inst.classList.toggle("away", scrollY < top - vh*.4);
     let cur=stops[0]; for(const s of stops){ if(s.getBoundingClientRect().top < vh*.55) cur=s }
     rd.textContent=cur.dataset.road; const L2=+cur.dataset.limit; lim.textContent=L2;
     const dt=Math.max(1,now-lastT), dy=Math.abs(scrollY-lastY); lastY=scrollY; lastT=now;
