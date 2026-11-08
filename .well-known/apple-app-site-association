@@ -21,6 +21,14 @@
           {
             "/": "/i",
             "comment": "invites"
+          },
+          {
+            "/": "/u/*",
+            "comment": "profile links"
+          },
+          {
+            "/": "/u",
+            "comment": "profile links"
           }
         ]
       }
