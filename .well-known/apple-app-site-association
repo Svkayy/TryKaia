@@ -13,6 +13,14 @@
           {
             "/": "/s",
             "comment": "things shared from Kaia"
+          },
+          {
+            "/": "/i/*",
+            "comment": "invites"
+          },
+          {
+            "/": "/i",
+            "comment": "invites"
           }
         ]
       }
