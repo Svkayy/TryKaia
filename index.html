@@ -157,7 +157,6 @@ a{color:inherit}
   .hud .speed .seg{font-size:46px}
   .two{grid-template-columns:minmax(0,1fr)}.two.flip>:first-child{order:0}
 }
-@media (max-width:700px){.pair{flex-direction:column;align-items:center}}
 
 /* ───────────── a phone, drawn at the iPhone's own 402 × 874 points ───────────── */
 .phone{position:relative;width:min(100%,360px);aspect-ratio:402/874;margin:0 auto;border-radius:16.5% / 7.6%;background:#050506;box-shadow:0 0 0 1px #2a2c31,0 0 0 9px #0a0b0d,0 0 0 10px #2a2c31,0 40px 80px -30px rgba(0,0,0,.8);flex:none}
@@ -579,6 +578,75 @@ footer .credits{flex-basis:100%;margin:6px 0 0;font:500 10.5px/1.5 var(--words);
 .story.mono .sfig{display:none}
 .story.mono .stt{top:478px}
 .story.mono .smeta{top:510px}
+
+/* ───────────── the ledger under a headline: what else that part of the app does ───────────── */
+.ledger{margin:clamp(22px,3vw,40px) 0 0;max-width:460px;border-top:1px solid var(--hair)}
+.ledger>div{display:grid;grid-template-columns:100px minmax(0,1fr) auto;column-gap:16px;align-items:center;min-height:54px;padding:8px 0;border-bottom:1px solid var(--hair);opacity:0;transform:translateY(8px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i,0) * 90ms)}
+.ledger.on>div{opacity:1;transform:none}
+.ledger dt{color:var(--dim)}
+.ledger dd{margin:0;font-size:17px;line-height:1.3;color:var(--cream)}
+.sky{display:flex;gap:3px}
+.sky i{width:9px;height:22px;border-radius:3px}
+.ledger dd.pace{grid-column:2 / -1;justify-self:start;display:inline-flex;gap:2px;padding:3px;border-radius:99px;box-shadow:inset 0 0 0 1px var(--hair)}
+.pace button{all:unset;box-sizing:border-box;cursor:pointer;min-width:46px;height:32px;display:grid;place-items:center;border-radius:99px;font:700 12px/1 var(--stamp);letter-spacing:.1em;color:var(--mute);transition:color .2s ease,background .2s ease}
+.pace button.on{color:var(--blue);background:rgba(46,124,230,.14)}
+.pace button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+@media (max-width:880px){.ledger{max-width:none}}
+@media (max-width:560px){.ledger>div{grid-template-columns:92px minmax(0,1fr) auto;column-gap:12px;min-height:44px;padding:6px 0}.ledger dd{font-size:15px}}
+@media (prefers-reduced-motion:reduce){.ledger>div{opacity:1;transform:none}}
+.rp-pace{position:absolute;right:16px;top:741px;z-index:3;display:flex;padding:2px;border-radius:99px;background:rgba(14,15,17,.82)}
+.rp-pace span{min-width:40px;height:30px;display:grid;place-items:center;border-radius:99px;font-size:11px;color:var(--a-t2);cursor:pointer;transition:color .2s ease,background .2s ease}
+.rp-pace span.on{color:#2E7CE6;background:rgba(46,124,230,.14)}
+
+/* ───────────── three phones in a row; a row you swipe on a narrow screen ───────────── */
+.pair.trio .phone{flex:1 1 0;width:auto;max-width:330px;min-width:0}
+@media (max-width:880px){
+  .pair.trio{justify-content:flex-start;gap:22px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+    margin:-14px calc(-1 * var(--gutter-r)) -64px calc(-1 * var(--gutter));padding:14px var(--gutter-r) 78px var(--gutter);scroll-padding-inline:var(--gutter)}
+  .pair.trio::-webkit-scrollbar{display:none}
+  .pair.trio .phone{flex:none;width:min(72vw,300px);scroll-snap-align:start}
+}
+
+/* roads driven: every road once, coloured by how many drives used it */
+.rdmap{position:absolute;inset:0;background:#1b2028}
+.rdmap img,.rdmap svg{position:absolute;left:0;top:0;width:402px;height:874px;display:block}
+.rdmap::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,15,17,.78) 0%,rgba(14,15,17,.22) 16%,rgba(14,15,17,0) 30%);pointer-events:none}
+.rd-top{position:absolute;left:16px;right:16px;top:64px;display:flex;gap:8px;z-index:3}
+.rd-top .b{width:44px;height:36px;border-radius:10px;display:grid;place-items:center}
+.rd-top svg{width:17px;height:17px}
+.rd-top .sp{flex:1}
+.rd-top .seg2{display:flex;height:36px;border-radius:10px;padding:3px}
+.rd-top .seg2 span{min-width:38px;padding:0 8px;display:grid;place-items:center;border-radius:8px;font-size:11px;color:var(--a-t2)}
+.rd-top .seg2 span.on{background:rgba(255,255,255,.13);color:var(--a-t1)}
+.rd-bub{position:absolute;left:16px;right:16px;top:112px;height:92px;border-radius:16px;padding:13px 16px 12px;z-index:3;display:flex;flex-direction:column;justify-content:space-between}
+.rd-bub .f{display:flex;align-items:baseline;gap:12px}
+.rd-bub .f .a-seg{font-size:28px}
+.rd-bub .f .a-caps{color:var(--a-t2);font-size:11px}
+.rd-bub .f .sp{flex:1}
+.rd-bub .lg{display:flex;align-items:center;gap:10px}
+.rd-bub .lg .a-caps{font-size:10px;color:var(--a-t2)}
+.rd-bub .lg i{flex:1;height:6px;border-radius:3px;background:linear-gradient(90deg,#2FBF71,#1FB5A6,#2E7CE6,#8B4FD9)}
+.rd-foot{position:absolute;left:16px;right:16px;top:788px;height:44px;border-radius:12px;padding:0 14px;display:flex;justify-content:space-between;align-items:center;z-index:3}
+.rd-foot .a-caps{font-size:11px}
+.applelogo.rd-credit{top:756px;left:18px}
+
+/* friends: a posted drive, stamped */
+.fside{display:grid;gap:20px;align-content:start}
+@media (min-width:881px){.fgrid{align-items:stretch}.invite{display:flex;flex-direction:column}.invite .mapwide{flex:1 1 auto}}
+.invite .mapwide img{object-fit:cover}
+.post .who .mi{margin-left:auto;color:var(--dim)}
+.post{padding:20px 22px 22px}
+.post .prow{display:flex;gap:16px;align-items:center;margin-top:16px}
+.post .thumb{width:120px;height:80px;border-radius:11px;flex:none}
+.post h4{font:700 22px/1.05 var(--stamp);text-transform:uppercase;margin:0 0 7px}
+.post .addr{color:var(--mute);font-size:15px}
+.stamps{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.stamps button{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 12px;border-radius:99px;box-shadow:inset 0 0 0 1px var(--hair);font:600 11px/1 var(--stamp);letter-spacing:.12em;text-transform:uppercase;color:var(--mute);transition:background .2s ease,color .2s ease,box-shadow .2s ease}
+.stamps button b{font-weight:700;color:var(--cream)}
+.stamps button.mine{background:var(--a-solid);box-shadow:none;color:var(--cream)}
+.stamps button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.post .leave b{text-transform:uppercase;font-size:13px;letter-spacing:.1em}
+@media (max-width:560px){.post .thumb{width:96px;height:64px;border-radius:9px}.post h4{font-size:20px}}
 </style>
 </head>
 <body>
@@ -629,6 +697,12 @@ footer .credits{flex-basis:100%;margin:6px 0 0;font:500 10.5px/1.5 var(--words);
       <div class="two">
         <div>
           <h2 class="stamp">It records<br>on its own.</h2>
+          <dl class="ledger">
+            <div style="--i:0"><dt class="caps">Starts</dt><dd>When the car moves.</dd></div>
+            <div style="--i:1"><dt class="caps">Songs</dt><dd>Pinned where each one came on.</dd></div>
+            <div style="--i:2"><dt class="caps">Sky</dt><dd>The weather and the light.</dd><span class="sky" aria-hidden="true"><i style="background:#FA9E7A"></i><i style="background:#6BADFA"></i><i style="background:#FAB33D"></i><i style="background:#9E66DB"></i><i style="background:#3352DB"></i></span></div>
+            <div style="--i:3"><dt class="caps">Stops</dt><dd>Fuel and charging, named and timed.</dd></div>
+          </dl>
         </div>
         <div class="phone" data-phone><div class="scr" id="recScr">
           <div class="fmap" id="recMap"><div class="plane"></div></div>
@@ -667,6 +741,12 @@ footer .credits{flex-basis:100%;margin:6px 0 0;font:500 10.5px/1.5 var(--words);
       <div class="two flip">
         <div>
           <h2 class="stamp">Every drive<br>in one place.</h2>
+          <dl class="ledger">
+            <div style="--i:0"><dt class="caps">Road trips</dt><dd>Legs stitched into one trip.</dd></div>
+            <div style="--i:1"><dt class="caps">Compare</dt><dd>Two runs of a trip, side by side.</dd></div>
+            <div style="--i:2"><dt class="caps">Search</dt><dd>By road, place, car or day.</dd></div>
+            <div style="--i:3"><dt class="caps">Photos</dt><dd>Kept with the drive they're from.</dd></div>
+          </dl>
         </div>
         <div class="phone" data-phone><div class="scr" id="logScr">
           <div class="island"></div><div class="sbar" data-time="9:41"></div>
@@ -728,6 +808,11 @@ footer .credits{flex-basis:100%;margin:6px 0 0;font:500 10.5px/1.5 var(--words);
       <div class="two">
         <div>
           <h2 class="stamp">Watch it<br>again.</h2>
+          <dl class="ledger">
+            <div style="--i:0"><dt class="caps">Pace</dt><dd class="pace" data-pace><button type="button" data-x=".5">0.5×</button><button type="button" data-x="1">1×</button><button type="button" data-x="2">2×</button><button type="button" data-x="4">4×</button></dd></div>
+            <div style="--i:1"><dt class="caps">On screen</dt><dd>Road, speed, songs and photos.</dd></div>
+            <div style="--i:2"><dt class="caps">Save</dt><dd>As a 60 fps video.</dd></div>
+          </dl>
         </div>
         <div class="phone" data-phone><div class="scr" id="rpScr">
           <div class="fmap" id="rpMap"><div class="plane"></div></div>
@@ -745,6 +830,7 @@ footer .credits{flex-basis:100%;margin:6px 0 0;font:500 10.5px/1.5 var(--words);
             <div class="a-caps">Sun 25 Oct · 12:40 · Golf GTI</div>
           </div>
           <div class="rp-card"><div class="sp"><span class="a-seg"><span class="ghost">888</span><span class="val" id="rpSpeed">0</span></span><span class="a-caps">mph</span></div><div class="a-caps rd" id="rpRoad">N Highland Ave</div></div>
+          <div class="rp-pace a-caps" data-pace><span data-x=".5">0.5×</span><span data-x="1">1×</span><span data-x="2">2×</span><span data-x="4">4×</span></div>
           <div class="rp-scrub"><div class="track" id="rpTrack"><i id="rpFill"></i><b id="rpKnob"></b></div></div>
           <div class="applelogo"><svg width="13" height="15" viewBox="0 0 13 15" fill="currentColor"><path d="M10.6 8c0-1.9 1.6-2.8 1.6-2.9-.9-1.3-2.2-1.4-2.7-1.5-1.1-.1-2.3.7-2.8.7-.6 0-1.5-.7-2.5-.6C3 3.7 1.8 4.5 1.1 5.7c-1.4 2.4-.4 6 1 8 .7 1 1.4 2 2.5 2 1 0 1.4-.7 2.6-.7s1.5.7 2.6.6c1.1 0 1.8-1 2.4-2 .8-1.1 1.1-2.2 1.1-2.3 0 0-2.1-.8-2.1-3.3zM8.7 2.3c.5-.7.9-1.6.8-2.5-.8 0-1.8.5-2.3 1.2-.5.6-1 1.5-.8 2.4.9.1 1.8-.4 2.3-1.1z"/></svg>Maps<small>Legal</small></div>
         </div></div>
@@ -789,6 +875,12 @@ footer .credits{flex-basis:100%;margin:6px 0 0;font:500 10.5px/1.5 var(--words);
       <div class="two flip">
         <div>
           <h2 class="stamp">Let Kaia<br>plan one.</h2>
+          <dl class="ledger">
+            <div style="--i:0"><dt class="caps">Today</dt><dd>Suggested from weather and light.</dd></div>
+            <div style="--i:1"><dt class="caps">On Home</dt><dd>Up to three plans, named and timed.</dd></div>
+            <div style="--i:2"><dt class="caps">Leave by</dt><dd>From your calendar, kept on the phone.</dd></div>
+            <div style="--i:3"><dt class="caps">Afterwards</dt><dd>Matched to the drive you then took.</dd></div>
+          </dl>
         </div>
         <div class="phone" data-phone><div class="scr" id="planScr">
           <div class="pmap" id="planMap"></div>
@@ -817,9 +909,9 @@ footer .credits{flex-basis:100%;margin:6px 0 0;font:500 10.5px/1.5 var(--words);
   <!-- 6 · garage and driver -->
   <section class="stop wrap" data-road="Checkerboard Mesa" data-limit="35" id="you">
     <div class="inner">
-      <div class="labelrow"><span class="caps">Garage · Driver</span><span class="caps">Garage · Driver</span></div>
-      <h2 class="stamp" style="margin-bottom:44px">Your cars and<br>your numbers.</h2>
-      <div class="pair">
+      <div class="labelrow"><span class="caps">Garage · Driver · Roads</span><span class="caps">Garage · Driver · Roads</span></div>
+      <h2 class="stamp" style="margin-bottom:44px">Your cars,<br>numbers and roads.</h2>
+      <div class="pair trio">
         <div class="phone" data-phone><div class="scr" id="garScr">
           <div class="island"></div><div class="sbar" data-time="9:41"></div>
           <div class="a-tools"></div>
@@ -843,6 +935,23 @@ footer .credits{flex-basis:100%;margin:6px 0 0;font:500 10.5px/1.5 var(--words);
           <div class="droad" style="top:638px"><b>N Highland Ave</b><span>6 · <strong>2:09</strong></span></div>
           <div class="droad" style="top:682px"><b>N Sheridan Ave</b><span>5 · <strong>—</strong></span></div>
           <div class="tabbar glass" data-tab="3"></div>
+        </div></div>
+        <div class="phone" data-phone><div class="scr" id="roadsScr">
+          <div class="rdmap" id="rdMap"></div>
+          <div class="island"></div><div class="sbar" data-time="9:41"></div>
+          <div class="rd-top">
+            <span class="b glass"><svg viewBox="0 0 18 18" fill="none" stroke="#F3F4F6" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M11.5 3.5 6 9l5.5 5.5"/></svg></span>
+            <span class="b glass"><svg viewBox="0 0 18 18" fill="none" stroke="#F3F4F6" stroke-width="1.6" stroke-linejoin="round"><circle cx="9" cy="9" r="7.2"/><path d="M12.4 5.6 10.3 10.3 5.6 12.4 7.7 7.7z"/></svg></span>
+            <span class="sp"></span>
+            <span class="seg2 glass a-caps"><span class="on">Map</span><span>Sat</span></span>
+            <span class="seg2 glass a-caps"><span class="on">2D</span><span>3D</span></span>
+          </div>
+          <div class="rd-bub glass">
+            <div class="f"><span class="a-seg"><span class="ghost">888</span><span class="val" data-roll="140">140</span></span><span class="a-caps">Roads</span><span class="sp"></span><span class="a-seg"><span class="ghost">8888</span><span class="val" data-roll="118">118</span></span><span class="a-caps">mi distinct</span></div>
+            <div class="lg"><span class="a-caps">1 run</span><i></i><span class="a-caps">7+</span></div>
+          </div>
+          <div class="applelogo rd-credit"><svg width="13" height="15" viewBox="0 0 13 15" fill="currentColor"><path d="M10.6 8c0-1.9 1.6-2.8 1.6-2.9-.9-1.3-2.2-1.4-2.7-1.5-1.1-.1-2.3.7-2.8.7-.6 0-1.5-.7-2.5-.6C3 3.7 1.8 4.5 1.1 5.7c-1.4 2.4-.4 6 1 8 .7 1 1.4 2 2.5 2 1 0 1.4-.7 2.6-.7s1.5.7 2.6.6c1.1 0 1.8-1 2.4-2 .8-1.1 1.1-2.2 1.1-2.3 0 0-2.1-.8-2.1-3.3zM8.7 2.3c.5-.7.9-1.6.8-2.5-.8 0-1.8.5-2.3 1.2-.5.6-1 1.5-.8 2.4.9.1 1.8-.4 2.3-1.1z"/></svg>Maps<small>Legal</small></div>
+          <div class="rd-foot glass"><span class="a-caps">This month</span><span class="a-caps">12 new · 31 repeated</span></div>
         </div></div>
       </div>
     </div>
@@ -900,6 +1009,7 @@ footer .credits{flex-basis:100%;margin:6px 0 0;font:500 10.5px/1.5 var(--words);
             <div class="solidbtn">Drive it from home</div>
           </div>
         </div>
+        <div class="fside">
         <div class="panel2 meet" style="--tone:#A7A3D9">
           <div class="who"><span class="av"><span>J</span></span><span class="caps">Jocelyn wants to meet</span></div>
           <div class="when"><span class="seg"><span class="ghost">88:88</span><span class="val">17:30</span></span><span class="caps">Tomorrow</span></div>
@@ -907,6 +1017,13 @@ footer .credits{flex-basis:100%;margin:6px 0 0;font:500 10.5px/1.5 var(--words);
           <div class="addr">Grandview Ave, Pittsburgh</div>
           <q>Sunset's at 5:12. I'll bring coffee.</q>
           <div class="leave"><span class="caps">Leave from your place</span><b>17:02</b></div>
+        </div>
+          <div class="panel2 post" style="--tone:#D9B48F">
+            <div class="who"><span class="av"><span>M</span></span><span class="caps">Maya posted a drive</span><span class="caps mi" id="postMi">1.4 mi</span></div>
+            <div class="prow"><div class="thumb" id="postThumb"></div><div><h4>Home the long way</h4><div class="addr">Oakland → Squirrel Hill</div></div></div>
+            <div class="stamps" id="stamps"><button type="button">Fire <b>3</b></button><button type="button" class="mine">Gold <b>2</b></button><button type="button">Wow <b>1</b></button><button type="button">Road <b>4</b></button></div>
+            <div class="leave"><span class="caps">The ends near your places</span><b>Never shown</b></div>
+          </div>
         </div>
       </div>
     </div>
