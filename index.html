@@ -685,12 +685,26 @@ footer .credits{flex-basis:100%;margin:6px 0 0;font:500 10.5px/1.5 var(--words);
 
 /* friends: what's sent to you on the left, the feed and a friend's page on the right */
 .fphones{display:flex;flex-direction:column;min-width:0}
-.fnote{align-items:baseline;gap:16px}
-.fnote b{text-transform:uppercase;font-size:13px;letter-spacing:.1em;white-space:nowrap}
 @media (min-width:881px){
   .fgrid{grid-template-columns:minmax(0,.68fr) minmax(0,1fr);gap:28px}
   .fside{grid-template-rows:1fr auto;align-content:stretch}
-  .fnote{margin-top:22px}
+}
+/* wide screens: the two cards together are exactly as tall as the phones beside them; the map takes up the slack */
+@media (min-width:1200px){
+  .fgrid{position:relative}
+  .fside{position:absolute;inset:0;grid-column:1/2;grid-row:1/2;gap:16px;grid-template-rows:minmax(0,1fr) auto}
+  .fphones{grid-column:2;grid-row:1}
+  .invite{min-height:0}
+  .invite .mapwide{aspect-ratio:auto;flex:1 1 0;min-height:0}
+  .invite .body{padding:16px 22px 18px}
+  .invite h3{margin:13px 0 12px}
+  .invite .solidbtn{margin-top:14px;height:46px}
+  .meet{padding:16px 22px 18px}
+  .meet .when{margin-top:12px}
+  .meet .when .seg{font-size:52px}
+  .meet h4{margin-top:13px}
+  .meet q{margin-top:10px}
+  .meet .leave{margin-top:14px;padding-top:12px}
 }
 .fsegs{position:absolute;left:16px;right:16px;top:66px;height:44px;padding:4px;border-radius:99px;background:var(--a-surf);box-shadow:inset 0 0 0 1px var(--a-hair);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));z-index:4}
 .fsegs>span{display:flex;align-items:center;justify-content:center;gap:5px;border-radius:99px;font-size:12px;color:var(--a-t2)}
@@ -705,9 +719,9 @@ footer .credits{flex-basis:100%;margin:6px 0 0;font:500 10.5px/1.5 var(--words);
 .pcard .ph .a-caps{display:block;margin-top:5px;font-size:10px;color:var(--a-t2)}
 .pcard .more{color:var(--a-t3)}
 .pcard .more svg{width:18px;height:18px;display:block}
-.pmap{position:relative;height:150px;margin-top:12px;border-radius:12px;overflow:hidden;background:#1d2430}
-.pmap img,.pmap svg{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover}
-.pmap .a-caps{position:absolute;left:10px;bottom:10px;z-index:2;font-size:10px;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.8)}
+.pcmap{position:relative;height:150px;margin-top:12px;border-radius:12px;overflow:hidden;background:#1d2430}
+.pcmap img,.pcmap svg{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover}
+.pcmap .a-caps{position:absolute;left:10px;bottom:10px;z-index:2;font-size:10px;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.8)}
 .pcard .pt{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-top:13px}
 .pcard h5{margin:0;font:600 20px/23px var(--words)}
 .pcard .pt .a-caps{display:block;margin-top:6px;font-size:10px;color:var(--a-t2)}
@@ -1172,7 +1186,7 @@ footer .credits{flex-basis:100%;margin:6px 0 0;font:500 10.5px/1.5 var(--words);
               <div class="feed">
                 <div class="pcard" style="--tone:#D9B48F">
                   <div class="ph"><span class="pa">M</span><div><b>Maya Okoro</b><span class="a-caps">Drove yesterday · posted 2h ago</span></div><span class="more"><svg viewBox="0 0 18 18" fill="currentColor"><circle cx="3.4" cy="9" r="1.6"/><circle cx="9" cy="9" r="1.6"/><circle cx="14.6" cy="9" r="1.6"/></svg></span></div>
-                  <div class="pmap" id="postThumb"><span class="a-caps">Golden hour</span></div>
+                  <div class="pcmap" id="postThumb"><span class="a-caps">Golden hour</span></div>
                   <div class="pt"><div><h5>Home the long way</h5><span class="a-caps">Oakland → Squirrel Hill</span></div><div class="pf"><span><b id="postMi">1.4</b><i>mi</i></span><span><b>5</b><i>min</i></span></div></div>
                   <p class="cap">Windows down the whole way. Worth the extra four minutes.</p>
                   <div class="stamps" id="stamps"><button type="button">Fire <b>3</b></button><button type="button" class="mine">Gold <b>2</b></button><button type="button">Wow <b>1</b></button><button type="button">Road <b>4</b></button></div>
@@ -1183,7 +1197,7 @@ footer .credits{flex-basis:100%;margin:6px 0 0;font:500 10.5px/1.5 var(--words);
                 </div>
                 <div class="pcard" style="--tone:#8FB39A">
                   <div class="ph"><span class="pa">T</span><div><b>Theo Park</b><span class="a-caps">Drove Saturday · posted Sat</span></div><span class="more"><svg viewBox="0 0 18 18" fill="currentColor"><circle cx="3.4" cy="9" r="1.6"/><circle cx="9" cy="9" r="1.6"/><circle cx="14.6" cy="9" r="1.6"/></svg></span></div>
-                  <div class="pmap" id="postThumb2"></div>
+                  <div class="pcmap" id="postThumb2"></div>
                 </div>
               </div>
               <div class="tabbar glass" data-tab="2"></div>
@@ -1207,7 +1221,6 @@ footer .credits{flex-basis:100%;margin:6px 0 0;font:500 10.5px/1.5 var(--words);
               <div class="tabbar glass" data-tab="2"></div>
             </div></div>
           </div>
-          <div class="leave fnote"><span class="caps">On a posted drive, the ends near your places</span><b>Never shown</b></div>
         </div>
       </div>
     </div>
