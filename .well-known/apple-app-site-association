@@ -29,6 +29,14 @@
           {
             "/": "/u",
             "comment": "profile links"
+          },
+          {
+            "/": "/m/*",
+            "comment": "meet-up invites"
+          },
+          {
+            "/": "/m",
+            "comment": "meet-up invites"
           }
         ]
       }
