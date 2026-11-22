@@ -65,7 +65,10 @@ const LOC = `<svg viewBox="0 0 12 12" style="height:13px;margin-left:5px"><path 
 const SB = `<span class="ic"><svg viewBox="0 0 18 12"><rect y="8" width="3" height="4" rx=".8" fill="#fff"/><rect x="5" y="5.5" width="3" height="6.5" rx=".8" fill="#fff"/><rect x="10" y="3" width="3" height="9" rx=".8" fill="#fff"/><rect x="15" width="3" height="12" rx=".8" fill="#fff"/></svg><svg viewBox="0 0 16 12"><path d="M8 11.6 5.7 9.2a3.3 3.3 0 0 1 4.6 0zM3.6 7a6.2 6.2 0 0 1 8.8 0l-1.5 1.5a4.1 4.1 0 0 0-5.8 0zM1.1 4.5a9.7 9.7 0 0 1 13.8 0l-1.5 1.5a7.6 7.6 0 0 0-10.8 0z" fill="#fff"/></svg><svg viewBox="0 0 28 13"><rect x=".5" y=".5" width="24" height="12" rx="3.8" fill="none" stroke="rgba(255,255,255,.4)"/><rect x="2" y="2" width="21" height="9" rx="2.4" fill="#fff"/><path d="M26 4.4v4.2c.9-.3 1.4-1.1 1.4-2.1s-.5-1.8-1.4-2.1z" fill="rgba(255,255,255,.4)"/></svg></span>`;
 document.querySelectorAll(".sbar").forEach(s=>s.innerHTML=`<span style="display:flex;align-items:center">${s.dataset.time}${s.dataset.loc?LOC:""}</span>${SB}`);
 const GEAR = `<svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><circle cx="14" cy="14" r="4.3"/><path d="M12.2 2.6h3.6l.7 3.1 2 .9 2.7-1.7 2.6 2.6-1.7 2.7.9 2 3.1.7v3.6l-3.1.7-.9 2 1.7 2.7-2.6 2.6-2.7-1.7-2 .9-.7 3.1h-3.6l-.7-3.1-2-.9-2.7 1.7-2.6-2.6 1.7-2.7-.9-2-3.1-.7v-3.6l3.1-.7.9-2-1.7-2.7 2.6-2.6 2.7 1.7 2-.9z"/></svg>`;
-document.querySelectorAll(".a-tools").forEach(t=>t.innerHTML=`<span class="rec"></span>${GEAR}`);
+// every tab's top bar: the inbox at the left, then record, Kaia and settings
+const MAIL = `<svg class="mail" viewBox="0 0 32 22.4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="1" width="30" height="20.4" rx="3.2"/><path d="M1.6 3.2 16 13.4 30.4 3.2M1.8 19.6l9.9-8.3M30.2 19.6l-9.9-8.3"/></svg>`;
+const ASK = `<svg viewBox="0 0 29 28" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M5.6 2h17.8A4.6 4.6 0 0 1 28 6.6V16a4.6 4.6 0 0 1-4.6 4.6H13.3L9 25.1c-.5.5-1.3.2-1.3-.5v-4H5.6A4.6 4.6 0 0 1 1 16V6.6A4.6 4.6 0 0 1 5.6 2z"/></svg>`;
+document.querySelectorAll(".a-tools").forEach(t=>{ t.innerHTML=`<span class="rec"></span>${ASK}${GEAR}`; t.insertAdjacentHTML("beforebegin", MAIL) });
 const TABS = [
   ["Home",`<path d="M12 3.2 2.8 11H5v9.3h5.2v-6h3.6v6H19V11h2.2z" fill="currentColor"/>`],
   ["Logs",`<rect x="2.5" y="4" width="21" height="16" rx="3" fill="currentColor"/><path d="M7 9h12M7 12.5h12M7 16h8" stroke="#2A2D33" stroke-width="1.7" stroke-linecap="round"/><circle cx="5.2" cy="9" r=".1"/>`],
@@ -361,22 +364,21 @@ function follower(box, name, routeKey, {mPerPx, tilt, ax, ay}){
 
 /* ── recording: Penn Avenue, live ── */
 (function rec(){
-  const scr=$("recScr"), dial=speedDial($("recDial"),"rgba(79,201,133,.5)");
-  const F=follower($("recMap"),"follow-penn","penn",{mPerPx:.62,tilt:52,ax:201,ay:452});
+  const scr=$("recScr"), recSpeed=$("recSpeed");
+  const F=follower($("recMap"),"follow-penn","penn",{mPerPx:.62,tilt:52,ax:201,ay:590});
   F.svg.innerHTML=`<polyline class="cas" fill="none" stroke="rgba(235,245,244,.55)" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/><polyline class="tr" fill="none" stroke="#1FB5A6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>`;
   const cas=F.svg.querySelector(".cas"), tr=F.svg.querySelector(".tr"), recArrow=$("recArrow");
   const words=["N","NE","E","SE","S","SW","W","NW"];
-  let s=0, t=0, dist0=.3, move0=24, shownSec=-1;
+  let s=0, t=0, dist0=.3, move0=24, shownSec=-1, shownMph=-1;
   const vAt=s=>16.4-2.6*Math.exp(-(((s-F.L*.52)/70)**2))+.7*Math.sin(s/37);
   function draw(dt){
     const v=vAt(s); if(dt){ s+=v*dt*1.9; t+=dt }   // the map runs a little faster than life, so it reads as driving if(s>=F.L-25){ s=0; t=0 }
     const h=F.place(s, dt); recArrow.style.transform=`rotate(${(((F.brg(s)-h)+540)%360-180).toFixed(1)}deg)`;
     const upto=Math.floor(s), path=F.pts.slice(0,upto+1).concat([F.at(s)]).filter((_,i,a)=>i%3===0||i===a.length-1).map(p=>p[0].toFixed(1)+","+p[1].toFixed(1)).join(" ");
     cas.setAttribute("points",path); tr.setAttribute("points",path);
-    dial(v*2.23694);
+    const mph=Math.round(v*2.23694); if(mph!==shownMph){ shownMph=mph; recSpeed.textContent=mph }
     const sec=Math.floor(t); if(sec!==shownSec){ shownSec=sec;
-      const mv=move0+t, mi=dist0+s/1609.34; $("recClock").textContent=clock(mv); $("recMove").textContent=clock(mv); $("recDist").textContent=mi.toFixed(1);
-      $("recAvg").textContent=mv>60?Math.round(mi/(mv/3600)):"—";
+      const mv=move0+t, mi=dist0+s/1609.34; $("recClock").textContent=clock(mv); $("recDist").textContent=mi.toFixed(1);
       const b=(h+360)%360; $("recCmp").textContent=words[Math.round(b/45)%8]; $("recDeg").textContent=Math.round(b)+"°";
       $("recWind").textContent=(Math.abs(((b-270+540)%360)-180)<45?"Headwind":"Crosswind")+" 6 mph" }
   }
