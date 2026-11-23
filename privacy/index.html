@@ -42,66 +42,95 @@ footer a{color:var(--mute)}</style>
 <div class="top"><a href="/"><svg viewBox="0 0 724 240" aria-label="Kaia"><path fill="none" stroke="currentColor" stroke-width="28" stroke-linecap="round" d="M14 14L14 96M14 144L14 226M50 106L134 14M50 140L134 226M270 14L342 14M246 38L246 96M366 38L366 96M270 120L342 120M246 144L246 226M366 144L366 226M478 14L478 96M478 144L478 226M614 14L686 14M590 38L590 96M710 38L710 96M614 120L686 120M590 144L590 226M710 144L710 226"/></svg></a><a class="caps" href="https://testflight.apple.com/join/sGENjmfT" rel="noopener">Join the beta</a></div>
 <main>
 <h1>Privacy</h1>
-<p class="meta">Last updated 6 November 2026</p>
+<p class="meta">Last updated 22 November 2026</p>
 
 <p class="lead">Kaia is an iPhone app that records your drives. This page explains what information Kaia uses, why, who else is involved, and how you can delete it. If anything here is unclear, email <a href="mailto:hello@trykaia.app">hello@trykaia.app</a>.</p>
 
 <h2>The short version</h2>
 <ul>
   <li>Your drives are stored on your iPhone.</li>
-  <li>An account is optional. If you create one, our server keeps your profile, your friends, and what you send them.</li>
-  <li>Kaia's notes are written by an AI service from summaries of your drives, not from your routes or music. It can also see small previews of photos you've added to a drive, unless you turn that off.</li>
+  <li>An account is optional. If you create one, our server keeps your profile, your friends, and what you share with them: posts, plans and the things you send.</li>
+  <li>Where you are right now is shared only in a plan's convoy, only with the people who said yes to that plan, and it isn't kept.</li>
+  <li>Kaia's notes are written by an AI service from summaries of your drives, not from your routes or music. It can also see small previews of the photos on your drives, unless you turn that off.</li>
   <li>We don't sell your information, show ads, or track you across other apps and websites.</li>
 </ul>
 
 <h2>Stored on your iPhone</h2>
-<p>To record and show your drives, Kaia keeps the following on your phone: your routes, speed, distance, motion and elevation readings, the places and cars you save, photos you add to a drive, the music that played, weather at the time, and the notes Kaia writes. This information is not uploaded to us. Deleting the app removes it.</p>
+<p>To record and show your drives, Kaia keeps the following on your phone: your routes, speed, distance, motion and elevation readings, the towns and roads along the way, the places and cars you save and what you log for a car, the music that played, weather at the time, and the notes Kaia writes. With an account it also keeps what friends have shared with you: their cards, posts, plans and roads. This stays on your phone unless you share it or a feature described below needs part of it. It is included in your iPhone's own backup if you use one. Deleting the app removes it.</p>
+
+<h2>Photos and videos</h2>
+<p>Once you let Kaia read your photo library, it looks there on its own for the photos and videos that belong to a drive: the ones taken while you drove, and the ones taken at stops near your route afterwards, until your next drive or for a day at most. They stay in your library. Kaia keeps a small preview of each, with when and where it was taken, so it can sit on the route. Take one off a drive and Kaia remembers not to bring it back. Videos play from your library and are never uploaded.</p>
+<p>To stop Kaia looking, turn off its Photos access in iPhone Settings. You can still add photos by hand; those are copied into Kaia.</p>
 
 <h2>If you create an account</h2>
-<p>You can use Kaia without an account. If you sign in (with Apple, Google, or a code sent to your email), we keep the following on our server so friends can find you and you can send each other things:</p>
+<p>You can use Kaia without an account. If you sign in (with Apple, Google, or a code sent to your email), we keep the following on our server so friends can find you and you can share with each other:</p>
 <ul>
   <li><b>Your account:</b> an identifier from Apple or Google, or your email address if you sign in by email, plus the name and username you choose. We don't ask Apple for your email address. Google tells us your name and email; we keep them only to sign you in.</li>
-  <li><b>Your Kaia card:</b> totals like miles, drives and roads driven, and, if you leave them on, your favourite road, current car, longest drive, the plaques you've earned, the names of roads you've driven and which cars are in your garage (what each is called, what it is and its colour; never a plate, a photo or its miles). You can turn the optional parts off in the app. Only your friends, and people you've sent or received a friend request from, can see your card. Someone who searches for your exact username sees only your name and username.</li>
-  <li><b>Your friends</b> and friend requests.</li>
-  <li><b>Your phone number, with a Kaia account:</b> so your crews can text and call you. We check it with a one-time code sent by text through Twilio, which receives the number only to send that code. Only your friends can get your number through the app; it isn't on your card and isn't shown to anyone else. You can change or remove it in Profile at any time, and deleting your account removes it. Recording drives needs no account and no number.</li>
+  <li><b>Your Kaia card:</b> totals like miles, drives and roads driven, and, if you leave them on, your favourite road, current car, longest drive, the plaques you've earned, the names of roads you've driven and which cars are in your garage (what each is called, what it is and its colour; never a plate, a photo or its miles). You can turn the optional parts off in the app. A profile photo, if you add one, goes with it. Only your friends can see your card and photo. Someone who searches for your exact username, has a friend request with you, or is in a plan or crew with you sees only your name and username. You can stop being found by username in Settings.</li>
+  <li><b>Your friends</b> and friend requests, and anyone you've blocked or muted. A request nobody answers is deleted after 180 days.</li>
+  <li><b>Your phone number, with a Kaia account:</b> so your crews can text and call you. We check it with a one-time code sent by text through Twilio, which receives the number only to send that code. Only your friends can get your number through the app; it isn't on your card and isn't shown to anyone else. A group text a friend starts is an ordinary Messages conversation, so the others in it can see your number there. You can change or remove it in Profile at any time, and deleting your account removes it. Recording drives needs no account and no number.</li>
   <li><b>Your roads, if you turn sharing on:</b> the shape of every road you've driven and how often, so friends who choose to can see them on their own map. Only your friends can see it. It is off unless you turn it on in Settings; turning it off again deletes it from our server.</li>
-  <li><b>Things you send friends:</b> routes, meet-up plans and notes, kept only until your friend's phone receives them, then deleted from our server.</li>
-  <li><b>AI usage:</b> a daily count of how much you've used Kaia's notes, so we can keep costs fair.</li>
+  <li><b>Notifications:</b> an address Apple gives your phone, so we can tell you about a friend request, a post or a plan. It is removed when you sign out, or after a year without use. A notification's words (a friend's name, a post's title, the start of a comment, a plan's place) pass through our server and Apple to reach you, and are deleted from our server once sent. For 31 days we keep only which kind of notification went from whom to whom, so nobody can be flooded.</li>
+  <li><b>The lock-screen drive card:</b> when a drive starts while Kaia is closed, what the card first shows (speed, distance, the road, the song playing, your car's name) passes through our server and Apple to reach your phone. It isn't kept.</li>
+  <li><b>Kaia in Messages:</b> a key for your phone, so Kaia's part of Messages can show and answer plans. We keep only a scrambled copy of it. We never see your conversations or who is in them.</li>
+  <li><b>Reports:</b> if you report someone, we keep who it was about, the post if there was one, and what you wrote. Only we read reports, and they stay after either account is deleted.</li>
+  <li><b>AI usage:</b> a daily count of how much you've used Kaia's notes, so we can keep costs fair. Kept for about two months.</li>
 </ul>
 
 <h2>Sharing with friends</h2>
-<p>You decide what to share and who with. A drive you post yourself goes up whole, from where it started to where it ended, unless you choose to hide its first and last stretch. Drives that post on their own, and roads you send to a friend, always have the start and finish removed, and so is any part that passes near a place you've saved, such as home. A meet-up shares the place you pick and the time. Anything you send through Messages, AirDrop or Instagram is handled by those services.</p>
+<p>You decide what to share and who with. What you share is kept on our server so your friends' phones can show it. A drive you mark private is never posted or sent, and is left out of what friends see of you.</p>
+<ul>
+  <li><b>Posts and stories:</b> the drive's route, its title and caption, when it was driven, how far and how long, the weather, road names, and the photos you pick (up to ten, with where and how they were taken removed). Every friend of yours can see a post, and no one else. A drive you post yourself goes up whole, from where it started to where it ended, with the towns at each end, unless you choose to hide its first and last stretch. A post stays until you delete it; a story comes down after two days. Videos are never posted.</li>
+  <li><b>Drives that post on their own:</b> off unless you turn it on in Settings. They carry no photos, and always have the start and finish removed, along with any part that passes near a place you've saved, such as home. A post's title is the drive's name, which can name the areas it ran between.</li>
+  <li><b>Stamps and comments:</b> kept with the post. Everyone who can see the post sees them with your name, including friends of the poster who aren't friends of yours. A GIF in a comment is kept as its GIPHY code; each phone that shows it loads the picture from GIPHY.</li>
+  <li><b>Roads you send:</b> a road, any notes you pin to it and your card, with the road's start and finish removed as above. Kept only until your friend's phone receives them, then deleted from our server, or after 90 days if it never does. Whether they've seen, saved or driven it is kept for a year, so the app can tell you. A road you text to a crew travels as a link that holds the road and your card, so anyone that link reaches can open it.</li>
+  <li><b>Plans:</b> the place and where it is, the time, your note, who is in it, each person's answer, when each set off and arrived, and the same for a drive on from there with its next stop. Everyone in a plan sees these, friends of yours or not, with your name and username. If a drive of yours ends at the place around the plan's time, Kaia marks you as arrived. A plan is deleted 60 days after its time.</li>
+  <li><b>Plan invites in a chat:</b> an invite is a link, and the link itself holds the place and where it is, the time, the host's first name and the first names of up to six people going. Anyone the link reaches can read those, with or without Kaia. Someone with Kaia who opens it also sees full names and can join the plan. The host can stop a link taking new people.</li>
+  <li><b>Crews:</b> a crew's name and who is in it. Members see each other's name and username.</li>
+</ul>
+
+<h2>Where you are, live</h2>
+<p>Kaia shares where you are right now in one case: a plan you've said yes to, once someone else has said yes too. On the way there, your phone tells the others who said yes your position, heading, speed and time to arrive, every couple of seconds while you move, and theirs tell you. It passes through our server, which hands it on and doesn't keep it. Their phones don't keep it either.</p>
+<p>Sharing starts when you tap On my way or ask for directions to the plan. It also starts by itself when Kaia sees you driving toward the place, between your time to leave (or an hour before the plan) and two hours after it. It stops when you arrive, when you tap Stop sharing, or when that time runs out. If people drive on together from there, only those who join that drive share with each other, until each leaves it, gets near their saved home, or twelve hours pass.</p>
 
 <h2>Kaia's notes (AI)</h2>
-<p>Kaia uses <a href="https://www.anthropic.com/legal/privacy" rel="noopener">Anthropic</a>'s Claude to write notes about your drives and to answer your questions. To do that it receives summaries: place names you've saved, road names, dates and times, distances, durations, weather, and the questions you ask. For a place without a name it may receive an approximate area, to within about 100 metres. It does not receive your recorded routes or your music. It can see small previews of the photos you've added to a drive (never their location, and never photos you haven't added), to mention them in its notes now and then and when you ask about a drive; turn this off in Settings, under Drive photos. If you're signed in, these requests pass through our server, which records only usage counts. Anthropic processes them under its commercial terms. You can turn Kaia's AI off in Settings, and then nothing is sent.</p>
+<p>Kaia uses <a href="https://www.anthropic.com/legal/privacy" rel="noopener">Anthropic</a>'s Claude to write notes about your drives and to answer your questions. It works only while you're signed in: requests pass through our server, which records usage counts and nothing of what was asked, and Anthropic processes them under its commercial terms. Kaia sends them when you ask something, and on its own after a drive and when you open the app.</p>
+<p>What it receives is a summary: the questions you ask, place names (ones you've saved, and the towns and areas a drive started in, passed and ended in), road names, dates and times, distances, durations, speeds, braking and acceleration figures, how often the phone was picked up, fuel stops, weather, and a car's year, make and model. For a place without a name it may receive an approximate area, to within about 100 metres. It does not receive your recorded routes, your music, your name, your friends, your plans or your phone number.</p>
+<p>It can see small previews of the photos on your drives, the ones Kaia found included, and a single still from a video (never their location, never the original, and never anything that isn't on a drive), to mention them in its notes now and then and when you ask about a drive; turn this off in Settings, under Drive photos. You can turn Kaia's AI off in Settings, and then nothing is sent.</p>
 
 <h2>Other services Kaia uses</h2>
 <p>Some features need information from outside services. Each one receives only what it needs for that feature:</p>
 <ul>
-  <li><b>Apple:</b> sign-in, and Apple Maps for place and road names, search, directions and map images. These receive locations or search text.</li>
+  <li><b>Apple:</b> sign-in; notifications and the lock-screen drive card; and Apple Maps for place and road names, search, directions and driving times, places near you as you drive, and map images. Maps receives locations or search text.</li>
   <li><b>Google:</b> sign-in only, if you choose it.</li>
-  <li><b><a href="https://open-meteo.com" rel="noopener">Open-Meteo</a>:</b> weather. Receives an approximate location.</li>
-  <li><b><a href="https://www.openstreetmap.org" rel="noopener">OpenStreetMap</a> (Overpass):</b> speed limits and road signs. Receives the map areas around your drives and plans.</li>
+  <li><b><a href="https://open-meteo.com" rel="noopener">Open-Meteo</a>:</b> weather. Receives a location and a date: where a drive started, or roughly where you are.</li>
+  <li><b><a href="https://www.openstreetmap.org" rel="noopener">OpenStreetMap</a> (Overpass):</b> speed limits, road signs and the shape of roads. Receives the map areas along your drives and plans. When the main service doesn't answer, Kaia asks a copy of it hosted by Mail.ru.</li>
   <li><b>Amazon Web Services (Open Data terrain tiles):</b> hills and elevation for planning. Receives map tile areas.</li>
-  <li><b>Spotify:</b> only if you connect it, to show the songs that played on a drive.</li>
+  <li><b><a href="https://giphy.com" rel="noopener">GIPHY</a>:</b> GIFs in comments. Your search words go through our server with nothing about you attached. The pictures load straight from GIPHY, which sees your phone's internet address.</li>
+  <li><b>US government car records (NHTSA and fueleconomy.gov):</b> to fill in a car's details. Receive the first part of a VIN, which names the model and not the individual car, or a year, make and model.</li>
+  <li><b>Twilio:</b> texts the code that checks a phone number. Receives the number.</li>
+  <li><b>Spotify:</b> only if you connected it, to show the songs that played on a drive.</li>
   <li><b>Supabase:</b> hosts our server and account sign-in.</li>
 </ul>
 
 <h2>Permissions on your iPhone</h2>
 <ul>
-  <li><b>Location:</b> to record drives. With “Always” access, Kaia can notice a drive starting and record it while the app is closed.</li>
+  <li><b>Location:</b> to record drives, and to share where you are in a convoy. With “Always” access, Kaia can notice a drive starting and record it while the app is closed.</li>
   <li><b>Motion &amp; Fitness:</b> to tell when you're driving and to measure braking and cornering.</li>
-  <li><b>Photos:</b> to show photos you took on a drive, and to save images you choose to share.</li>
+  <li><b>Photos:</b> to find the photos and videos from a drive, and to save images you choose to share.</li>
+  <li><b>Camera:</b> to scan a friend's Kaia code or a car's VIN, and to take a profile photo.</li>
+  <li><b>Calendar:</b> only if you switch it on, to remind you when to leave for events that have a place. Your events stay on your phone; an event's place goes to Apple Maps to work out the drive.</li>
   <li><b>Media &amp; Apple Music:</b> optional, to show the songs that played.</li>
-  <li><b>Notifications:</b> to tell you about saved drives and Kaia's notes. These are sent from your phone, not from our server.</li>
+  <li><b>Notifications:</b> about saved drives and Kaia's notes, which come from your phone, and about friends, posts and plans, which come from our server.</li>
 </ul>
 <p>You can change any of these in iPhone Settings at any time.</p>
 
 <h2>Keeping and deleting your information</h2>
 <ul>
-  <li><b>Everything at once:</b> in the app, go to Settings and choose Delete all my data. This deletes your drives, cars, photos, friends, planned drives and Kaia's notes from your phone, and your account if you have one.</li>
+  <li><b>Everything at once:</b> in the app, go to Settings and choose Delete all my data. This deletes your drives, cars, photos, friends, planned drives and Kaia's notes from your phone, and your account if you have one. The photos and videos themselves stay in your photo library.</li>
   <li><b>On your phone:</b> delete any drive, place, car or photo in the app, or delete the app to remove everything.</li>
-  <li><b>Your account:</b> in the app, go to your profile and choose Delete account (or use Delete all my data). This removes your profile, card, friends, anything still waiting on our server, and your usage counts. Things a friend already received stay on their phone.</li>
+  <li><b>A post:</b> delete it and it leaves our server with its photos and comments. Deleting the drive from your phone doesn't take its post down.</li>
+  <li><b>Your account:</b> in the app, go to your profile and choose Delete account (or use Delete all my data). This removes your profile, card, photo and phone number, your posts with their photos, your stamps and comments, the plans you host, the crews you own, your roads, anything still waiting on our server, and your usage counts. Things a friend already received stay on their phone, and a link already sent to a chat still shows what it holds. Reports are kept.</li>
   <li>Signing out removes your sign-in from the phone. It doesn't delete your drives or your account.</li>
 </ul>
 
@@ -110,6 +139,9 @@ footer a{color:var(--mute)}</style>
 
 <h2>Security</h2>
 <p>Information sent between the app and our server is encrypted in transit. Sign-in details are kept in your iPhone's Keychain. Only you and the friends you add can send you things.</p>
+
+<h2>This website</h2>
+<p>trykaia.app sets no cookies and doesn't track visits. It is hosted by GitHub and loads fonts from Google and one script from Cloudflare, which see your internet address as any website's host does. What a shared link shows is read from the link in your browser and isn't sent to us.</p>
 
 <h2>Children</h2>
 <p>Kaia isn't meant for children under 13, and we don't knowingly collect information from them.</p>

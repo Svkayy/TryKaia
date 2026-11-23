@@ -161,7 +161,8 @@ a{color:inherit}
 /* ───────────── a phone, drawn at the iPhone's own 402 × 874 points ───────────── */
 .phone{position:relative;width:min(100%,360px);aspect-ratio:402/874;margin:0 auto;border-radius:16.5% / 7.6%;background:#050506;box-shadow:0 0 0 1px #2a2c31,0 0 0 9px #0a0b0d,0 0 0 10px #2a2c31,0 40px 80px -30px rgba(0,0,0,.8);flex:none}
 .pair .phone{width:min(100%,330px)}
-.phone .scr{position:absolute;left:0;top:0;width:402px;height:874px;transform-origin:0 0;transform:scale(var(--k,.85));border-radius:56px;overflow:hidden;background:var(--a-bg);font-family:var(--words);color:var(--a-t1);font-weight:500;line-height:1.2}
+/* the screen's corners are cut with clip-path as well as overflow: Safari drops a rounded overflow edge when something inside blends with what is under it (the recording screen's warm tint), and the square corners then stick out of the frame */
+.phone .scr{position:absolute;left:0;top:0;width:402px;height:874px;transform-origin:0 0;transform:scale(var(--k,.85));border-radius:56px;overflow:hidden;clip-path:inset(0 round 56px);background:var(--a-bg);font-family:var(--words);color:var(--a-t1);font-weight:500;line-height:1.2}
 .phone .scr::after{content:"";position:absolute;inset:0;pointer-events:none;background-image:var(--grain,none);background-size:160px;opacity:.05;z-index:20}
 .phone .scr .shot{position:absolute;left:0;top:0;width:402px;height:874px;display:block}
 .island{position:absolute;top:11px;left:50%;width:124px;height:37px;margin-left:-62px;border-radius:20px;background:#000;z-index:30}
