@@ -63,7 +63,7 @@ footer a{color:var(--mute)}
 // Who it is rides after "#" (never sent to any server): a username, then a first name.
 (function(){
   const frag=location.hash.slice(1), parts=frag.split("~");
-  const user=(parts[0]||"").toLowerCase(), name=decodeURIComponent(parts[1]||"").slice(0,40);
+  const user=(parts[0]||"").toLowerCase(), name=(function(){ try{ return decodeURIComponent(parts[1]||"") }catch(e){ return "" } })().slice(0,40);
   if(!/^[a-z0-9_.]{3,20}$/.test(user)){ document.getElementById("open").style.display="none"; return }
   document.getElementById("who").textContent="@"+user+" is on Kaia";
   if(name){

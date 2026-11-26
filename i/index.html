@@ -63,7 +63,7 @@ footer a{color:var(--mute)}
 // The invite rides after "#" (never sent to any server): a code, then the inviter's first name.
 (function(){
   const frag=location.hash.slice(1), parts=frag.split("~");
-  const code=parts[0]||"", name=decodeURIComponent(parts[1]||"").slice(0,40);
+  const code=parts[0]||"", name=(function(){ try{ return decodeURIComponent(parts[1]||"") }catch(e){ return "" } })().slice(0,40);
   if(!/^[A-Za-z0-9]{10,32}$/.test(code)){ document.getElementById("open").style.display="none"; return }
   if(name){
     document.getElementById("who").textContent=name+" invited you";
